@@ -23,20 +23,21 @@ const { response } = require("express");
 });
 
 
-/****** get  todos of user ******/
+/****** get Not completed todos of user ******/
 
-router.get("/:user/todos", (req, res) => {
-	Todo.find({ user: req.params.user })
+
+
+ router.get("/:user/todos/NotCompleted", (req, res) => {
+	Todo.find({ isDone: false, user: req.params.user})
   .then(todos => {
-		res.json(todos);
+		res.status(200).json(todos);
 	})
   .catch(err => {
     return res.status(200).json({ err });
   });
-
+  
 });
-
-
+ 
 
 
 /*********  add New Todo ******/
