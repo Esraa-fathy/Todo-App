@@ -1,12 +1,14 @@
 const express=require("express");
 const mongoose=require("mongoose");
 const bodyParser = require("body-parser");
+require('dotenv').config();
 const app=express();
 const PORT = 4000;
 
 
 // connection to mongodb
-mongoose.connect("mongodb://localhost/todo_express", {
+var DB_Name=process.env.DB_NAME;
+mongoose.connect(`mongodb://localhost/${DB_Name}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,  
 });
